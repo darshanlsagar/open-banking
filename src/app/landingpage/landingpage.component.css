@@ -1,0 +1,48 @@
+.logo{
+	height: 35px;
+}
+.separator{
+	color: whitesmoke;
+}
+
+.custom-cards .card{
+	cursor: pointer;
+}
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web&subset=latin,latin-ext);
+.kpx_login .kpx_authTitle {
+    text-align: center;
+    line-height: 300%;
+}
+    
+.kpx_login .kpx_socialButtons a {
+    color: white;
+	opacity:0.9;
+}
+.kpx_login .kpx_socialButtons a:hover {
+    color: white;
+	opacity:1;    	
+}
+
+.kpx_login .kpx_socialButtons .kpx_btn-facebook {background: #3b5998; -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+       -o-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;}
+.kpx_login .kpx_socialButtons .kpx_btn-facebook:hover {background: #172d5e}
+.kpx_login .kpx_socialButtons .kpx_btn-facebook:focus {background: #fff; color:#3b5998; border-color: #3b5998;}
+
+.kpx_login .kpx_socialButtons .kpx_btn-twitter {background: #00aced; -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+       -o-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;}
+.kpx_login .kpx_socialButtons .kpx_btn-twitter:hover {background: #043d52}
+.kpx_login .kpx_socialButtons .kpx_btn-twitter:focus {background: #fff; color:#00aced; border-color: #00aced;}
+
+.kpx_login .kpx_socialButtons .kpx_btn-google-plus {background: #c32f10; -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+       -o-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;}
+.kpx_login .kpx_socialButtons .kpx_btn-google-plus:hover {background: #6b1301}
+.kpx_login .kpx_socialButtons .kpx_btn-google-plus:focus {background: #fff; color: #c32f10; border-color: #c32f10}
