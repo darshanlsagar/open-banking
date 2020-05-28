@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-	this.globals.loadView(Dashboard);
+	this.globals.loadView(LandingPage);
 	this.cdRef.detectChanges();
 
   }
