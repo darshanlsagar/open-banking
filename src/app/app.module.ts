@@ -6,11 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPage } from './landingpage/landingpage.component';
+import { Dashboard } from './dashboard/dashboard.component';
+import { LauncherDirective } from './utils/launcher.directive';
 
 @NgModule({
   declarations: [
 	AppComponent,
-	LandingPage
+	LandingPage,
+	Dashboard,
+
+	LauncherDirective
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@ export class LandingPage {
 	login(){
 		let req = this.loginForm.value;
 		console.log(req);
-		// this.globals.requestSubscriber({reqObj: req});
+		// this.global.requestSubscriber({reqObj: req});
 	}
 
 	cardAction(event){

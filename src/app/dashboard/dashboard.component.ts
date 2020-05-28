@@ -1,0 +1,38 @@
+import { Component } from "@angular/core";
+import { Globals } from '../utils/globals.service';
+import { FormGroup, FormControl } from '@angular/forms';
+
+@Component({
+	selector: 'dashboard-page',
+	templateUrl: 'dashboard.component.html',
+	styleUrls: ['./simple-sidebar.css']
+})
+export class Dashboard {
+
+	loanForm: FormGroup = new FormGroup({
+		one: new FormControl(''),
+		two: new FormControl(''),
+	});
+	fileToUpload: File = null;
+
+	constructor(public globals: Globals) { }
+
+	handleFileInput(files: FileList) {
+		this.fileToUpload = files.item(0);
+	}
+
+	submit() {
+		let req = this.loanForm.value;
+		console.log(req);
+		this.uploadFile();
+		this.globals.requestSubscriber({ reqObj: req });
+	}
+
+	uploadFile() {
+		this.globals.postFile(this.fileToUpload).subscribe(data => {
+			console.log("Success");
+		}, error => {
+			console.log(error);
+		});
+	}
+}
