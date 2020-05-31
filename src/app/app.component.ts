@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/co
 import { Globals } from './utils/globals.service';
 import { LandingPage } from './landingpage/landingpage.component';
 import { Dashboard } from "./dashboard/dashboard.component";
+import { Loans } from './loans/loans.component';
 
 @Component({
   selector: 'app-root',
@@ -25,16 +26,27 @@ export class AppComponent implements OnInit, AfterViewInit {
 		let code = codeUrl.searchParams.get("code");
 		this.globals.code = code;
 		this.globals.userId = localStorage.getItem("userId");
-		this.globals.userId = "Guest";
+		// this.globals.userId = "Guest";
+		this.globals.loadView(Dashboard);
 	} else {
 		localStorage.removeItem("userId");
+		this.globals.loadView(LandingPage);
+		this.requestToken();
 	}
-	this.globals.loadView(LandingPage);
 	this.cdRef.detectChanges();
   }
 
   async requestToken(){
-	  let sub = await this.globals.requestSubscriber({reqObj: {}});
+	  let sub = await this.globals.requestSubscriber({url: this.globals.serverUrl+"/accountaccessconsent", reqObj: {}});
+	  sub.subscribe(
+		(response) => {
+			this.globals.consentId = response.ConsentId;
+			console.log(response);
+		}, (httpError) => {
+			console.log(httpError);
+			this.globals.displayPopup({msg:httpError.message});
+		}
+	)
   }
   
 }
