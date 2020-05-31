@@ -9,6 +9,14 @@
 	cursor: pointer;
 }
 
+.custom-select.ng-touched.ng-invalid, .form-control.ng-touched.ng-invalid, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
+    border-color: #dc3545;
+}
+
+.invalid-registration {
+	color: #dc3545;
+}
+
 
 
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web&subset=latin,latin-ext);

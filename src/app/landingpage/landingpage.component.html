@@ -154,7 +154,7 @@
 				</h4>
 				<hr>
 				<p class="text-success text-center">Please use open banking credentials</p>
-				<form [formGroup]="loginForm">
+				<form id="loginForm" [formGroup]="loginForm">
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-prepend">
@@ -163,7 +163,7 @@
 							<input name=""
 								class="form-control"
 								placeholder="Email or User Id"
-								formControlName="userName"
+								formControlName="email"
 								type="email">
 						</div> <!-- input-group.// -->
 					</div> <!-- form-group// -->
@@ -245,14 +245,25 @@
 					</button>
 				</h4>
 				<p class="text-center">Get started with your free account</p>
-				<form>
+				<form [formGroup]="registrationForm" id="registrationForm">
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 						</div>
 						<input name=""
 							class="form-control"
-							placeholder="Full name"
+							placeholder="First name"
+							formControlName="firstName"
+							type="text">
+						<input name=""
+							class="form-control"
+							placeholder="Middle name"
+							formControlName="middleName"
+							type="text">
+						<input name=""
+							class="form-control"
+							placeholder="Last name"
+							formControlName="lastName"
 							type="text">
 					</div> <!-- form-group// -->
 					<div class="form-group input-group">
@@ -262,36 +273,16 @@
 						<input name=""
 							class="form-control"
 							placeholder="Email address"
+							formControlName="email"
 							type="email">
 					</div> <!-- form-group// -->
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-						</div>
-						<select class="custom-select"
-							style="max-width: 120px;">
-							<option selected="">+91</option>
-						</select>
-						<input name=""
-							class="form-control"
-							placeholder="Phone number"
-							type="text">
-					</div> <!-- form-group// -->
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
-						</div>
-						<input name=""
-							class="form-control"
-							placeholder="Date of birth"
-							type="text">
-					</div> <!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 						</div>
 						<input class="form-control"
-							placeholder="Create password"
+							placeholder="Password"
+							formControlName="password"
 							type="password">
 					</div> <!-- form-group// -->
 					<div class="form-group input-group">
@@ -300,10 +291,17 @@
 						</div>
 						<input class="form-control"
 							placeholder="Repeat password"
+							formControlName="password"
 							type="password">
+					</div> <!-- form-group// -->
+					<div class="form-group" *ngIf="registrationForm.invalid && registrationForm.touched">
+						<div class="invalid-registration">
+							Please enter valid info
+						  </div>
 					</div> <!-- form-group// -->
 					<div class="form-group">
 						<button type="submit"
+							(click)="register()"
 							class="btn btn-primary btn-block"> Create Account </button>
 					</div> <!-- form-group// -->
 					<p class="text-center">Have an account? <a href="" 

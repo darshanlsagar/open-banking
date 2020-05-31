@@ -12,7 +12,9 @@ import {
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
 
-const xlmxHttpOptions = {
+declare var Swal: any;
+
+const defHttpOptions = {
 	headers: new HttpHeaders({
 		"Content-Type": "application/json",
 		/* "Access-Control-Allow-Origin": "*",
@@ -27,9 +29,10 @@ const xlmxHttpOptions = {
 export class Globals {
 	userId: string = "";
 	userName: string = "Asdf";
-	serverUrl: string = "";
+	serverUrl: string = "http://20.44.227.212/forgeopenbanking";
 	launcher: ViewContainerRef;
 	code: string;
+	clientId: string;
 
 	constructor(
 		private httpCli: HttpClient,
@@ -51,19 +54,47 @@ export class Globals {
 	}
 
 	getHttpOptions(param) {
-		let httpOptions = xlmxHttpOptions;
+		let httpOptions = defHttpOptions;
 		if (param.httpOptions) {
 			httpOptions = { httpOptions, ...param.httpOptions };
 		}
 		return httpOptions;
 	}
 
+	invokeMethod(param, methodName?){
+		let method = methodName ? param[methodName] : param[param.methodName];
+        if(method){
+            if(param.context){
+                return method.call(param.context, param);
+            } else {
+                return method(param);
+            }
+        } else {
+			console.log("Invokation Method Not Found");
+		}
+	}
+
 	requestSubscriber(param) {
-		let url = this.serverUrl;
+		let url = param.url ? param.url : this.serverUrl;
 		let req = {};
 		req["header"] = this.getHeader();
 		req["body"] = param.reqObj;
 		let httpOptions = this.getHttpOptions(param);
+		/* this.httpCli.post(url, param.reqObj, httpOptions).subscribe(
+			(response) => {
+				param.resObj = response;
+				this.invokeMethod(param, "callback");
+				return response;
+			}, (httpError) => {
+				if(httpError.error instanceof ProgressEvent){
+					param.error = httpError;
+				} else {
+					param.error = httpError.error;
+				}
+				this.invokeMethod(param, "callback");
+				return param.error;
+			}
+		) */
 		return this.httpCli.post(url, param.reqObj, httpOptions).pipe(
 			map((res) => {
 				let key = Object.keys(res)[0];
@@ -81,5 +112,21 @@ export class Globals {
 				return true;
 			})
 		);
+	}
+
+	createEvent(name) {
+		var e = document.createEvent("Event");
+		e.initEvent(name, true, true);
+		return e;
+	}
+
+    displayPopup(param){
+        if(param.msg){
+            param.text = param.msg;
+        }
+        Swal.fire(param).then((res)=>{
+            param.popupState = res;
+            this.invokeMethod(param, 'callback');
+        })
 	}
 }

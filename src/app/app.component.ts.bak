@@ -20,6 +20,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
+    var codeUrl = new URL(location.href.replace("#", "?"));
+	let code = codeUrl.searchParams.get("code");
+	if(code){
+		this.globals.code = code;
+		this.globals.userId = "Guest";
+	}
 	this.globals.loadView(LandingPage);
 	this.cdRef.detectChanges();
 
