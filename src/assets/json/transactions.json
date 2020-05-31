@@ -1,0 +1,33 @@
+{
+  "Data": {
+    "Transaction": [
+      {
+        "AccountId": "string",
+        "TransactionId": "string",
+        "Amount": { "Amount": "string", "Currency": "string" },
+        "CreditDebitIndicator": "Credit",
+        "Status": "Booked",
+        "BookingDateTime": "2020-05-31T18:11:04.536Z",
+        "ValueDateTime": "2020-05-31T18:11:04.536Z",
+        "TransactionInformation": "string",
+        "AddressLine": "string",
+        "BankTransactionCode": { "Code": "string", "SubCode": "string" },
+        "ProprietaryBankTransactionCode": {
+          "Code": "string",
+          "Issuer": "string"
+        },
+        "Balance": {
+          "Amount": { "Amount": "string", "Currency": "string" },
+          "CreditDebitIndicator": "Credit",
+          "Type": "ClosingAvailable"
+        },
+        "MerchantDetails": {
+          "MerchantName": "string",
+          "MerchantCategoryCode": "string"
+        }
+      }
+    ]
+  },
+  "Links": { "Self": "string", "Prev": "string", "Next": "string" },
+  "Meta": { "TotalPages": 0 }
+}
