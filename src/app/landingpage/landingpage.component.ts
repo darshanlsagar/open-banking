@@ -29,7 +29,7 @@ export class LandingPage {
 
 	cardAction(event){
 		console.log(event.target);
-		if(this.globals.userId){
+		if(!this.globals.userId){
 			$('#loginModal').modal('show');
 		} else {
 			this.globals.loadView(Dashboard);

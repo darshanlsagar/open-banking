@@ -19,6 +19,7 @@ import { LauncherDirective } from './utils/launcher.directive';
   ],
   imports: [
     BrowserModule,
+	AppRoutingModule,
 	FormsModule,
 	ReactiveFormsModule,
 	HttpClientModule
