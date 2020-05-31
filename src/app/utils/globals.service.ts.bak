@@ -29,6 +29,7 @@ export class Globals {
 	userName: string = "Asdf";
 	serverUrl: string = "";
 	launcher: ViewContainerRef;
+	code: string;
 
 	constructor(
 		private httpCli: HttpClient,
