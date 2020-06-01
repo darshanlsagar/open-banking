@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Globals } from '../utils/globals.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Dashboard } from '../dashboard/dashboard.component';
+import { Loans } from '../loans/loans.component';
 
 declare var $;
 
@@ -36,7 +37,9 @@ export class LandingPage {
 		sub.subscribe(
 			(response) => {
 				console.log(response);
-				this.globals.userId = req.userId.value;
+				this.globals.userId = req.email;
+				localStorage.setItem("userId", this.globals.userId);
+				$("#loginModal").modal('hide');
 			}, (httpError) => {
 				console.log(httpError);
 				this.globals.displayPopup({msg:httpError.message});
@@ -67,27 +70,12 @@ export class LandingPage {
 		}
 	}
 
-	launchConsentScreen(){
-		let code = "";
-		let openIdAcc = "";
-		let consentId = "";
-
-		let url = "https://api.natwest.useinfinite.io/authorize";
-		let paramStr = `client_id=${this.globals.clientId}
-		&response_type=${code}
-		&scope=${openIdAcc}
-		&redirect_uri=${location.href}
-		&request=${consentId}`;
-		window.location.href = url+"?"+paramStr;
-
-	}
-
 	cardAction(event) {
 		console.log(event.target);
 		if (!this.globals.userId) {
 			$('#loginModal').modal('show');
 		} else {
-			this.globals.loadView(Dashboard);
+			this.globals.loadView(Loans);
 		}
 	}
 }

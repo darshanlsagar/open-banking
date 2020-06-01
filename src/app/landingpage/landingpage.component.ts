@@ -50,7 +50,7 @@ export class LandingPage {
 	}
 
 	register() {
-		if (!this.registrationForm.valid) {
+		if (this.registrationForm.valid) {
 			let req = this.registrationForm.value;
 			let sub = this.globals.requestSubscriber({ url: this.globals.serverUrl+"/registerUser", reqObj: req });
 			sub.subscribe(
