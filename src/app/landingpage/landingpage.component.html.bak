@@ -42,7 +42,7 @@
 				</li>
 				<li class="nav-item"
 					*ngIf="globals.userId">
-					<a href="javascript:void(0)">User</a>
+					<a href="javascript:void(0)">{{globals.userId}}</a>
 				</li>
 			</ul>
 		</div>
@@ -92,13 +92,6 @@
 <div class="container-fluid">
 <div class="row custom-cards">
 	<div class="col-sm-3">
-		<!-- <div class="card">
-			<div class="card-body">
-			  <h5 class="card-title">Pay</h5>
-			  <p class="card-text">Pay Description</p>
-			  <a href="#" class="btn btn-primary">Go to pay</a>
-			</div>
-		  </div> -->
 		<div class="card" >
 			<img class="card-img-top" style="height:150px;width:100%" src="../../assets/img/pay.jpg" alt="Card image">
 			<div class="card-body d-flex justify-content-center">
