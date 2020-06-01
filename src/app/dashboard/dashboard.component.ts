@@ -17,7 +17,7 @@ export class Dashboard {
 
 	constructor(public globals: Globals) {
 		let req = {'code':this.globals.code};
-		let sub = this.globals.requestSubscriber({ url: this.globals.serverUrl+"/exchangetoken", reqObj: req });
+		/* let sub = this.globals.requestSubscriber({ url: this.globals.serverUrl+"/exchangetoken", reqObj: req });
 		sub.subscribe(
 			(response) => {
 				console.log(response);
@@ -25,7 +25,7 @@ export class Dashboard {
 				console.log(httpError);
 				this.globals.displayPopup({msg:httpError.message});
 			}
-		)
+		) */
 	}
 
 	handleFileInput(files: FileList) {

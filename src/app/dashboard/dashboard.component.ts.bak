@@ -15,7 +15,18 @@ export class Dashboard {
 	});
 	fileToUpload: File = null;
 
-	constructor(public globals: Globals) { }
+	constructor(public globals: Globals) {
+		let req = {'code':this.globals.code};
+		let sub = this.globals.requestSubscriber({ url: this.globals.serverUrl+"/exchangetoken", reqObj: req });
+		sub.subscribe(
+			(response) => {
+				console.log(response);
+			}, (httpError) => {
+				console.log(httpError);
+				this.globals.displayPopup({msg:httpError.message});
+			}
+		)
+	}
 
 	handleFileInput(files: FileList) {
 		this.fileToUpload = files.item(0);

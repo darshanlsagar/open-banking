@@ -3,6 +3,8 @@ import { Globals } from "../utils/globals.service";
 import { FormGroup, FormControl, FormArray } from "@angular/forms";
 import * as balance from "../../assets/json/balance.json";
 import * as trans from "../../assets/json/transactions.json";
+import { Details } from "../details/details.component";
+import { Dashboard } from "../dashboard/dashboard.component";
 
 declare var $;
 
@@ -22,7 +24,6 @@ export class AccDetails implements OnInit {
   constructor(public globals: Globals) {}
 
   ngOnInit() {
-	  
     /* let sub = this.globals.requestSubscriber({
 		url: this.globals.serverUrl + "/accounts",
 		reqObj: {},
@@ -96,5 +97,11 @@ export class AccDetails implements OnInit {
     });
   }
 
-  backAction(acc) {}
+  backAction(e) {
+    this.globals.loadView(Details);
+  }
+
+  loans(e) {
+    this.globals.loadView(Dashboard);
+  }
 }
