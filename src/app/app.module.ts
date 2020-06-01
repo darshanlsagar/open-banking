@@ -10,6 +10,7 @@ import { Dashboard } from './dashboard/dashboard.component';
 import { LauncherDirective } from './utils/launcher.directive';
 import { Loans } from './loans/loans.component';
 import { Details } from './details/details.component';
+import { AccDetails } from './accdetails/accdetails.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { Details } from './details/details.component';
 	Dashboard,
 	Loans,
 	Details,
-
+	AccDetails,
 	LauncherDirective
   ],
   imports: [

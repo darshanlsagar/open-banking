@@ -29,11 +29,12 @@ const defHttpOptions = {
 export class Globals {
 	userId: string = "";
 	userName: string = "Asdf";
-	serverUrl: string = "http://20.44.225.130/forgeopenbanking";
+	serverUrl: string = "http://20.44.226.11/forgeopenbanking";
 	launcher: ViewContainerRef;
 	code: string;
 	clientId: string = "S0Q27-PqhEqUHn1rIDB97_8L6l1OtTobEi0zY_fPCyc=";
 	consentId: string;
+	accessToken: string;
 
 	constructor(
 		private httpCli: HttpClient,
@@ -55,7 +56,7 @@ export class Globals {
 	}
 
 	getHttpOptions(param) {
-		let httpOptions = defHttpOptions;
+		let httpOptions = param.httpOptions?param.httpOptions:defHttpOptions;
 		if (param.httpOptions) {
 			httpOptions = { httpOptions, ...param.httpOptions };
 		}

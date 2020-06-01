@@ -2,9 +2,9 @@
   "Data": {
     "Transaction": [
       {
-        "AccountId": "string",
-        "TransactionId": "string",
-        "Amount": { "Amount": "string", "Currency": "string" },
+        "AccountId": "631193c9-a581-4c88-8520-068815c04810",
+        "TransactionId": "12777494839489",
+        "Amount": { "Amount": "23445", "Currency": "$" },
         "CreditDebitIndicator": "Credit",
         "Status": "Booked",
         "BookingDateTime": "2020-05-31T18:11:04.536Z",

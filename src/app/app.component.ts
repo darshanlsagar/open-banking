@@ -3,6 +3,8 @@ import { Globals } from './utils/globals.service';
 import { LandingPage } from './landingpage/landingpage.component';
 import { Dashboard } from "./dashboard/dashboard.component";
 import { Loans } from './loans/loans.component';
+import { Details } from './details/details.component';
+import { AccDetails } from './accdetails/accdetails.component';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 		this.globals.code = code;
 		this.globals.userId = localStorage.getItem("userId");
 		// this.globals.userId = "Guest";
-		this.globals.loadView(Dashboard);
+		this.globals.loadView(Details);
 	} else {
 		localStorage.removeItem("userId");
 		this.globals.loadView(LandingPage);
@@ -41,6 +43,19 @@ export class AppComponent implements OnInit, AfterViewInit {
 	  sub.subscribe(
 		(response) => {
 			this.globals.consentId = response.ConsentId;
+			console.log(response);
+		}, (httpError) => {
+			console.log(httpError);
+			this.globals.displayPopup({msg:httpError.message});
+		}
+	)
+  }
+
+  async exchangeToken(){
+	  let sub = await this.globals.requestSubscriber({url: this.globals.serverUrl+"/exchangetoken", reqObj: {code:this.globals.code}});
+	  sub.subscribe(
+		(response) => {
+			this.globals.accessToken = response.ConsentId;
 			console.log(response);
 		}, (httpError) => {
 			console.log(httpError);
