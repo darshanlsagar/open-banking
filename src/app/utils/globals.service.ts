@@ -29,7 +29,7 @@ const defHttpOptions = {
 export class Globals {
 	userId: string = "";
 	userName: string = "Asdf";
-	serverUrl: string = "http://20.44.237.236/forgeopenbanking";
+	serverUrl: string = "http://20.44.225.130/forgeopenbanking";
 	launcher: ViewContainerRef;
 	code: string;
 	clientId: string = "S0Q27-PqhEqUHn1rIDB97_8L6l1OtTobEi0zY_fPCyc=";
