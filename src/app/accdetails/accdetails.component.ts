@@ -20,29 +20,54 @@ export class AccDetails implements OnInit {
     Amount: new FormControl("Am"),
     Currency: new FormControl("C"),
   });
-
+balanceDetails:any = [];
   constructor(public globals: Globals) {}
 
   ngOnInit() {
-    /* let sub = this.globals.requestSubscriber({
-		url: this.globals.serverUrl + "/accounts",
-		reqObj: {},
-		httpOptions: { Authorization: this.globals.code },
+    debugger;
+   this.getTransactionDetails();
+   this.getBalanceDetails();
+  }
+async getTransactionDetails(){
+  let sub = this.globals.BalTransaction({
+		url: this.globals.serverUrl + "/accounts/transactions",
+		reqObj: {
+      AccountId:this.globals.accountId
+    }
 	  });
 	  sub.subscribe(
 		(response) => {
+      debugger;
 		  console.log(response);
-		  this.loadBalance(response.Data.Account);
+      this.loadTransactions(response.Data.Transaction);
 		},
 		(httpError) => {
 		  console.log(httpError);
 		  this.globals.displayPopup({ msg: httpError.message });
 		}
-	  ); */
-    this.loadBalance(balance.Data.Balance[0]);
-    this.loadTransactions(trans.Data.Transaction);
-  }
-
+	  ); 
+    //this.loadBalance(balance.Data.Balance[0]);
+}
+async getBalanceDetails(){
+  let sub = this.globals.BalTransaction({
+		url: this.globals.serverUrl + "/accounts/balances",
+		reqObj: {
+      AccountId:this.globals.accountId
+    }
+	  });
+	  sub.subscribe(
+		(response) => {
+      debugger;
+		  console.log(response);
+      this.balanceDetails = response.Data.Balance
+		},
+		(httpError) => {
+		  console.log(httpError);
+		  this.globals.displayPopup({ msg: httpError.message });
+		}
+	  ); 
+    //this.loadBalance(balance.Data.Balance[0]);
+}
   addAcc(acc) {
     return new FormGroup({
       AccountSubType: new FormControl(acc.AccountSubType),

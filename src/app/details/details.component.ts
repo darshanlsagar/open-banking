@@ -12,33 +12,49 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class Details implements OnInit {
   accounts: FormArray = new FormArray([]);
-
+  //accountDetails:any = [];
   constructor(public globals: Globals) {}
 
   ngOnInit() {
-	let httpOpts = {
-		headers: new HttpHeaders({
-			"Content-Type": "application/json"
-		})
-	}
-    /* let sub = this.globals.requestSubscriber({
-      url: this.globals.serverUrl + "/accounts",
-      reqObj: {},
-      httpOptions: httpOpts
-    });
-    sub.subscribe(
+    this.getExchangeToken()
+	  let httpOpts = {
+	  	headers: new HttpHeaders({
+		  	"Content-Type": "application/json"
+		  })
+  	}
+  this.loadAccounts(accounts.Data.Account);
+  }
+
+  async getExchangeToken(){
+    debugger;
+	  let sub = await this.globals.requestSubscriber({url: this.globals.serverUrl+"/exchangetoken", reqObj: {code:this.globals.code}});
+	  sub.subscribe(
+		(response) => {
+      debugger;
+      this.globals.accessToken = response;
+      this.getAccountsDetails(this.globals.accessToken);
+			//console.log(response);
+		}, (httpError) => {
+			//console.log(httpError);
+			this.globals.displayPopup({msg:httpError.message});
+		}
+	)
+  }
+  async getAccountsDetails(param){
+    debugger;
+    let sub = this.globals.requestGetSubscriber(param);
+      sub.subscribe(
       (response) => {
-        console.log(response);
-        this.loadAccounts(response.Data.Account);
+        //debugger;
+        //console.log("dat from get account "+response.Data.Account);
+        this.accounts = response.Data.Account
       },
       (httpError) => {
         console.log(httpError);
         this.globals.displayPopup({ msg: httpError.message });
       }
-    ); */
-    this.loadAccounts(accounts.Data.Account);
+      );
   }
-
   addAcc(acc) {
     return new FormGroup({
       AccountSubType: new FormControl(acc.AccountSubType),
@@ -55,6 +71,7 @@ export class Details implements OnInit {
   }
 
   cardAction(acc) {
+    this.globals.accountId = acc;
     this.globals.loadView(AccDetails);
   }
 }

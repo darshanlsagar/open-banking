@@ -17,7 +17,7 @@
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
-							href="#">Log out</a>
+							href="javascript:window.location.href='http://forgeurself.eastasia.cloudapp.azure.com:4200/'">Log out</a>
 					</div>
 				</li>
 			</ul>
@@ -27,28 +27,28 @@
 <section class="">
 	<div class="container">
 		<div class="row">
-			<div class="custom-cards col-md-4 p-2" *ngFor="let account of accounts.controls; index as i">
-				<div class="card" (click)="cardAction(account)">
+			<div class="custom-cards col-md-4 p-2" *ngFor="let account of accounts; index as i">
+				<div class="card" (click)="cardAction(account.AccountId)">
 					<div class="card-header d-flex">
 						<img class="img-fluid mt-1"
 							style="height:33px;width:33px"
 							src="../../assets/img/natwest.png"
 							alt="">
 						<div class=" pl-3">
-							<h2 class="">{{account.controls.AccountSubType.value}}</h2>
+							<h2 class="">{{account.AccountType}}</h2>
 						</div>
 					</div>
 					<div class="card-body d-flex">
 						<form class="col-md-6">
 							<div class="form-group">
 								<label class="mb-0">Account Id</label>
-								<p>{{account.controls.AccountId.value}}</p>
+								<p>{{account.AccountId}}</p>
 							</div>
 						</form>
 						<form class="col-md-4">
 							<div class="form-group">
 								<label class="mb-0">Nickname</label>
-								<p>{{account.controls.Nickname.value}}</p>
+								<p>{{account.Nickname}}</p>
 							</div>
 						</form>
 					</div>

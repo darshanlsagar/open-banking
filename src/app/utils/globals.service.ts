@@ -35,6 +35,7 @@ export class Globals {
 	clientId: string = "S0Q27-PqhEqUHn1rIDB97_8L6l1OtTobEi0zY_fPCyc=";
 	consentId: string;
 	accessToken: string;
+	accountId : string;
 
 	constructor(
 		private httpCli: HttpClient,
@@ -77,6 +78,7 @@ export class Globals {
 	}
 
 	requestSubscriber(param) {
+		debugger;
 		let url = param.url ? param.url : this.serverUrl;
 		let req = {};
 		req["header"] = this.getHeader();
@@ -101,6 +103,45 @@ export class Globals {
 			map((res) => {
 				let key = Object.keys(res)[0];
 				return res[key];
+			})
+		);
+	}
+	BalTransaction(param) {
+		debugger;
+		let url = param.url ? param.url : this.serverUrl;
+		
+		const  headers = new  HttpHeaders().set("Authorization", this.accessToken);
+		/* this.httpCli.post(url, param.reqObj, httpOptions).subscribe(
+			(response) => {
+				param.resObj = response;
+				this.invokeMethod(param, "callback");
+				return response;
+			}, (httpError) => {
+				if(httpError.error instanceof ProgressEvent){
+					param.error = httpError;
+				} else {
+					param.error = httpError.error;
+				}
+				this.invokeMethod(param, "callback");
+				return param.error;
+			}
+		) */
+		return this.httpCli.post(url, param.reqObj, {headers}).pipe(
+			map((res) => {
+				debugger;
+				return res;
+			})
+		);
+	}
+
+	requestGetSubscriber(param) {
+		debugger;
+	let url = this.serverUrl + "/accounts"
+		const  headers = new  HttpHeaders().set("Authorization", param);
+		return this.httpCli.get(url,{headers}).pipe(
+			map((res) => {
+				
+				return res;
 			})
 		);
 	}

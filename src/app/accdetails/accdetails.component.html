@@ -17,7 +17,7 @@
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
-							href="#">Log out</a>
+							href="javascript:window.location.href='http://forgeurself.eastasia.cloudapp.azure.com:4200/'">Log out</a>
 					</div>
 				</li>
 			</ul>
@@ -39,7 +39,7 @@
 				[formGroup]="balAcc">
 				<div class="card">
 					<div class="card-body d-flex">
-						<div class="d-flex col-md-4">
+						<div class="d-flex col-md-2">
 							<img class="img-fluid mt-1"
 								style="height:33px;width:33px"
 								src="../../assets/img/natwest.png"
@@ -48,22 +48,31 @@
 								<h2 class="">NatWest</h2>
 							</div>
 						</div>
-						<form class="col-md-4">
+						<div *ngFor="let balance of balanceDetails" class="d-flex col-md-5">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="mb-0">Account Id</label>
-								<p>{{balAcc.controls.AccountId.value}}</p>
+								<p>{{balance.AccountId}}</p>
 							</div>
-						</form>
-						<form class="col-md-4">
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="mb-0">Type</label>
+								<p>{{balance.Type}}</p>
+							</div>
+						</div>
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="mb-0">Balance</label>
 								<div class="d-flex">
-								<h6>{{balAcc.controls.Amount.value}}</h6>
+								<h6>{{balance.Amount.Amount}}</h6>
 								&nbsp;
-								<p class="">{{balAcc.controls.Currency.value}}</p>
+								<p class="">{{balance.Amount.Currency}}</p>
 							</div>
 							</div>
-						</form>
+						</div>
+					</div>
+				
 					</div>
 				</div>
 			</div>
