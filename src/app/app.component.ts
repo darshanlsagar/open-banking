@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
+	  debugger;
 	var codeUrl = new URL(location.href.replace("#", "?"));
 	if(codeUrl.href.indexOf("?") > -1){
 		let code = codeUrl.searchParams.get("code");
@@ -63,5 +64,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 		}
 	)
   }
+  
+
   
 }
