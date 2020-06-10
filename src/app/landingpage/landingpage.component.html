@@ -44,6 +44,14 @@
 					*ngIf="globals.userId">
 					<a href="javascript:void(0)">{{globals.userId}}</a>
 				</li>
+				<li class="nav-item separator">
+					&nbsp; / &nbsp;
+				</li>
+				<li class="nav-item">
+					<a href="javascript:void(0)"
+						data-toggle="modal"
+						data-target="#chatModal"> Chat</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -301,6 +309,32 @@
 						data-toggle="modal"
 						data-target="#loginModal">Log In</a> </p>
 				</form>
+			</article>
+		</div> <!-- card.// -->
+	</div>
+</div>
+
+<!--Chat Modal -->
+<div class="modal fade"
+	id="chatModal"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="chatModal"
+	aria-hidden="true">
+	<div class="modal-dialog"
+		role="document">
+		<div class="card modal-content">
+			<article class="card-body kpx_login">
+				<h4 class="card-title text-center mb-4 mt-1">Banking Assistant
+					<button type="button"
+						class="close"
+						data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</h4>
+				<hr>
+				<iframe src='https://webchat.botframework.com/embed/qna-openbanking-assist-bot?s=0HYCz-4Bp04.R6ZBQPXBex1ycYBPrJmYgZGbH_UjyOhvjCsinNJarCU'  style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>
 			</article>
 		</div> <!-- card.// -->
 	</div>

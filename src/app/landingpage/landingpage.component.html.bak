@@ -80,8 +80,7 @@
 					<iframe width="100%"
 						height="300px"
 						src="https://www.youtube.com/embed/m2ObbHGeWgM"
-						frameborder="0"
-						allowfullscreen></iframe>
+						frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
 				</div>
 			</div>
 		</div>
