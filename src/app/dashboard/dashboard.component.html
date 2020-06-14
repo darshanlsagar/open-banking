@@ -17,7 +17,7 @@
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
-							href="javascript:window.location.href='http://forgeurself.eastasia.cloudapp.azure.com:4200/'">Log out</a>
+						href="javascript:window.location.href='http://forgeurself.eastasia.cloudapp.azure.com:4200/'">Log out</a>
 					</div>
 				</li>
 			</ul>
@@ -58,10 +58,23 @@
 						<br />
 						<div class="card">
 							<article class="card-body">
-								<h4 class="card-title text-center mb-4 mt-1">Loan Documnets
+								<h4 class="card-title text-center mb-4 mt-1">Apply for a Home Loan
 								</h4>
 								<hr>
 								<form [formGroup]="loanForm">
+									<div class="form-group row">
+										<label for="staticFullName"
+											class="col-sm-3 col-form-label">Full Name</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input name=""
+													class="form-control"
+													placeholder="Full Name"
+													formControlName="fullName"
+													type="text">
+											</div> <!-- input-group.// -->
+										</div>
+									</div> <!-- form-group// -->
 									<div class="form-group row">
 										<label for="staticEmail"
 											class="col-sm-3 col-form-label">Email</label>
@@ -69,13 +82,91 @@
 											<div class="input-group">
 												<input name=""
 													class="form-control"
-													placeholder="Email or User Id"
-													formControlName="one"
+													placeholder="Email ID"
+													formControlName="email"
 													type="email">
 											</div> <!-- input-group.// -->
 										</div>
 									</div> <!-- form-group// -->
 									<div class="form-group row">
+										<label for="staticPhoneNumber"
+											class="col-sm-3 col-form-label">Phone Number</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input name=""
+													class="form-control"
+													placeholder="Phone Number"
+													formControlName="phoneNumber"
+													type="number">
+											</div> <!-- input-group.// -->
+										</div>
+									</div> <!-- form-group// -->
+									<div class="form-group row">
+										<label for="staticAddress"
+											class="col-sm-3 col-form-label">Address</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input name=""
+													class="form-control"
+													placeholder="Address"
+													formControlName="address"
+													type="text">
+											</div> <!-- input-group.// -->
+										</div>
+									</div> <!-- form-group// -->
+									<div class="form-group row">
+										<label for="staticRentOrHome"
+											class="col-sm-3 col-form-label">Do you own or rent your home?</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input name=""
+													class="form-control"
+													placeholder="Own or Rent"
+													formControlName="rentOrHome"
+													type="text">
+											</div> <!-- input-group.// -->
+										</div>
+									</div> <!-- form-group// -->
+									<div class="form-group row">
+										<label for="staticSellOrBuy"
+											class="col-sm-3 col-form-label">Do you need to sell your home before buying a new one?</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input name=""
+													class="form-control"
+													placeholder="No or yes"
+													formControlName="sellOrBuy"
+													type="text">
+											</div> <!-- input-group.// -->
+										</div>
+									</div> <!-- form-group// -->
+									<div class="form-group row">
+										<label for="staticPrequalified"
+											class="col-sm-3 col-form-label">Are you pre-qualified for a loan?</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input name=""
+													class="form-control"
+													placeholder="Yes, No or Cash Buyer"
+													formControlName="prequalified"
+													type="text">
+											</div> <!-- input-group.// -->
+										</div>
+									</div> <!-- form-group// -->
+									<div class="form-group row">
+										<label for="staticComments"
+											class="col-sm-3 col-form-label">Comments or questions:</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input name=""
+													class="form-control"
+													placeholder="Comments or questions:"
+													formControlName="comments"
+													type="text">
+											</div> <!-- input-group.// -->
+										</div>
+									</div> <!-- form-group// -->
+									<!--<div class="form-group row">
 										<label for="staticEmail"
 											class="col-sm-3 col-form-label">Document 1</label>
 										<div class="col-sm-9">
@@ -84,9 +175,9 @@
 													placeholder="******"
 													formControlName="two"
 													type="file">
-											</div> <!-- input-group.// -->
+											</div>
 										</div>
-									</div> <!-- form-group// -->
+									</div> --><!-- form-group// -->
 									<div class="form-group row">
 										<div class="col-3">
 											<button type="submit"
