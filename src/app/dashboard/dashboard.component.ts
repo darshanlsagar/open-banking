@@ -10,8 +10,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class Dashboard {
 
 	loanForm: FormGroup = new FormGroup({
-		one: new FormControl(''),
-		two: new FormControl(''),
+		fullName: new FormControl(''),  
+		email: new FormControl(''),
+		phoneNumber: new FormControl(''),
+		address: new FormControl(''),
+		rentOrHome: new FormControl(''),
+		sellOrBuy: new FormControl(''),
+		prequalified: new FormControl(''),
+		comments: new FormControl(''),     
 	});
 	fileToUpload: File = null;
 
@@ -34,9 +40,18 @@ export class Dashboard {
 
 	submit() {
 		let req = this.loanForm.value;
-		console.log(req);
-		this.uploadFile();
-		this.globals.requestSubscriber({ reqObj: req });
+		debugger;
+		console.log(req); 
+		//this.uploadFile();
+		let sub = this.globals.requestSubscriber({url: this.globals.serverUrl+"/submitDetails", reqObj: req});
+		sub.subscribe(
+		  (response) => {
+			  console.log(response);
+		  }, (httpError) => {
+			  console.log(httpError);
+			  this.globals.displayPopup({msg:httpError.message});
+		  }
+	  )
 	}
 
 	uploadFile() {
